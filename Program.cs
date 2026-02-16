@@ -68,6 +68,22 @@ namespace AttributesExample
 
             // Throws an error if we try to use it, because error is set to true, if set to false, it will allow usage with a warning
             // myPet.EatOld();
+
+            // Reflection
+            // The art of getting metadata from attributes
+            Type type = typeof(Animal);
+            Console.WriteLine(type); // AttributesExample.Animal
+
+            // Gets the properties of the class Animal
+            foreach (var item in type.GetProperties())
+            {
+                // Gets the custom attributes used in the Animal class
+                foreach (MyCustomAttribute attribute in item.GetCustomAttributes(typeof(MyCustomAttribute), true))
+                {
+                    Console.WriteLine(item.Name); // Name / Age
+                    Console.WriteLine(attribute.Name); // Accessor
+                }
+            }
         }
     }
 
