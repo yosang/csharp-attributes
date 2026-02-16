@@ -82,6 +82,7 @@ namespace AttributesExample
                 {
                     Console.WriteLine(item.Name); // Name / Age
                     Console.WriteLine(attribute.Name); // Accessor
+                    Console.WriteLine(attribute.Action); // What it does
                 }
             }
         }
