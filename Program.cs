@@ -85,6 +85,20 @@ namespace AttributesExample
                     Console.WriteLine(attribute.Action); // What it does
                 }
             }
+
+            // We also used the ObsoleteAttribute, here is how we get the metadata
+            foreach (var m in type.GetMethods())
+            {
+                foreach (ObsoleteAttribute obs in m.GetCustomAttributes(typeof(ObsoleteAttribute), true))
+                {
+                    if (obs != null)
+                    {
+                        Console.WriteLine(m.Name);
+                        Console.WriteLine(obs.Message);
+                        Console.WriteLine(obs.IsError);
+                    }
+                }
+            }
         }
     }
 
